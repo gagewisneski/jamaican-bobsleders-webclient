@@ -1,0 +1,11 @@
+Birth a Jamaican
+
+<%= form_tag "localhost:3001/jamaicans/create", method: :post do %>
+  <%= label_tag :first_name %>
+  <%= text_field_tag :first_name %>
+  <%= label_tag :last_name %>
+  <%= text_field_tag :last_name %>
+  <%= label_tag :position %>
+  <%= text_field_tag :position %>
+  <%= submit_tag "give birth" %>
+<% end %>
