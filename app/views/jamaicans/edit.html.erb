@@ -1,0 +1,12 @@
+<h1>Edit Jamaican</h1>
+
+<%= form_tag "/jamaicans/#{@jamaican['id']}", method: :patch do %>
+  <% a = @jamaican["name"].split(" ") %>
+  <%= label_tag :first_name %>
+  <%= text_field_tag :first_name, a.first %>
+  <%= label_tag :last_name %>
+  <%= text_field_tag :last_name, a.last %>
+  <%= label_tag :position %>
+  <%= text_field_tag :position, @jamaican["bobsled_position"] %>
+  <%= submit_tag "Update" %>
+<% end %>

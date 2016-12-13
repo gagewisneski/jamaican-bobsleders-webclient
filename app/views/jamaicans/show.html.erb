@@ -2,3 +2,5 @@
 <h3>ID: <%= @jamaican["id"] %></h3>
 <h3>Name: <%= @jamaican["name"] %></h3>
 <h3>Bobsled Position: <%= @jamaican["bobsled_position"] %></h3>
+<%= link_to "edit", "/jamaicans/#{@jamaican['id']}/edit" %>
+<%= link_to "delete", "/jamaicans/#{@jamaican['id']}", method: :delete %>
