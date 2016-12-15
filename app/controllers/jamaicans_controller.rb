@@ -1,17 +1,21 @@
 class JamaicansController < ApplicationController
 
   def index
-    unirest_jamaicans = Unirest.get("#{ENV['API_URL']}/jamaicans").body
-    @jamaicans = []
-    unirest_jamaicans.each do |unirest_jamaican|
-      jamaican = Jamaican.new(unirest_jamaican)
-      @jamaicans << jamaican
-    end
+    # unirest_jamaicans = Unirest.get("#{ENV['API_URL']}/jamaicans").body
+    # @jamaicans = []
+    # unirest_jamaicans.each do |unirest_jamaican|
+    #   jamaican = Jamaican.new(unirest_jamaican)
+    #   @jamaicans << jamaican
+    # end
+
+    @jamaicans = Jamaican.all
   end
 
   def show
-    unirest_jamaican = Unirest.get("#{ENV['API_URL']}/jamaicans/#{params[:id]}.json").body
-    @jamaican = Jamaican.new(unirest_jamaican)
+    # unirest_jamaican = Unirest.get("#{ENV['API_URL']}/jamaicans/#{params[:id]}.json").body
+    # @jamaican = Jamaican.new(unirest_jamaican)
+
+    @jamaican = Jamaican.find(params[:id])
   end
 
   def new
@@ -35,7 +39,12 @@ class JamaicansController < ApplicationController
   end
 
   def destroy
-    @jamaican = Unirest.delete("#{ENV['API_URL']}/jamaicans/#{params[:id]}")
+    @jamaican = Jamaican.find(params[:id])
+    @jamaican.destroy
     redirect_to "/jamaicans"
   end
 end
+
+
+
+
