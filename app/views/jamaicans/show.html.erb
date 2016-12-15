@@ -1,6 +1,11 @@
 <h1>Jamaicans DUDE!</h1>
-<h3>ID: <%= @jamaican["id"] %></h3>
-<h3>Name: <%= @jamaican["name"] %></h3>
-<h3>Bobsled Position: <%= @jamaican["bobsled_position"] %></h3>
-<%= link_to "edit", "/jamaicans/#{@jamaican['id']}/edit" %>
-<%= link_to "delete", "/jamaicans/#{@jamaican['id']}", method: :delete %>
+<h3>ID: <%= @jamaican.id %></h3>
+<h3>Name: <%= @jamaican.name %></h3>
+<h3>Bobsled Position: <%= @jamaican.position %></h3>
+<h3>Shirts:</h3>
+<% @jamaican.shirts.each do |shirt| %>
+  <h4>Color: <%= "#{shirt['color']}" %></h4>
+  <h4>Size: <%= "#{shirt['size']}" %></h4>
+<% end %>
+<%= link_to "edit", "/jamaicans/#{@jamaican.id}/edit" %>
+<%= link_to "delete", "/jamaicans/#{@jamaican.id}", method: :delete %>

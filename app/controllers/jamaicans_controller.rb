@@ -5,7 +5,8 @@ class JamaicansController < ApplicationController
   end
 
   def show
-    @jamaican = Unirest.get("#{ENV['API_URL']}/jamaicans/#{params[:id]}.json").body
+    unirest_jamaican = Unirest.get("#{ENV['API_URL']}/jamaicans/#{params[:id]}.json").body
+    @jamaican = Jamaican.new(unirest_jamaican)
   end
 
   def new
