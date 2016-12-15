@@ -1,7 +1,12 @@
 class JamaicansController < ApplicationController
 
   def index
-    @jamaicans = Unirest.get("#{ENV['API_URL']}/jamaicans").body
+    unirest_jamaicans = Unirest.get("#{ENV['API_URL']}/jamaicans").body
+    @jamaicans = []
+    unirest_jamaicans.each do |unirest_jamaican|
+      jamaican = Jamaican.new(unirest_jamaican)
+      @jamaicans << jamaican
+    end
   end
 
   def show

@@ -1,8 +1,13 @@
 <h1>Index</h1>
 
 <% @jamaicans.each do |jamaican| %>
-  ID: <%= jamaican["id"] %><br>
-  Name: <%= jamaican["name"] %><br>
-  Sled Position: <%= jamaican["bobsled_position"] %><br>
+  ID: <%= jamaican.id %><br>
+  Name: <%= jamaican.name %><br>
+  Sled Position: <%= jamaican.position %><br>
+  Shirts: <br>
+  <% jamaican.shirts.each do |shirt| %>
+  Color: <%= "#{shirt['color']}" %>
+  Size: <%= "#{shirt['size']}" %><br>
+  <% end %>
   ===============================<br>
 <% end %>
