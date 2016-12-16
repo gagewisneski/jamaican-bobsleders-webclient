@@ -22,7 +22,7 @@ class JamaicansController < ApplicationController
   end
 
   def create
-    @jamaican = Unirest.post("#{ENV['API_URL']}/jamaicans", parameters: {first_name: params[:first_name], last_name: params[:last_name], position: params[:position]}, headers:{"Accept" => "application/json"}).body
+    @jamaican = Unirest.post("#{ENV['API_URL']}/jamaicans", parameters: {first_name: params[:first_name], last_name: params[:last_name], position: params[:position]}, headers:{"Accept" => "application/json", "Authorization" => "Token test", "User-Email" => "test"}).body
 
     redirect_to "/jamaicans/#{@jamaican['id']}"
     # redirect_to jamaican_path(@jamaican["id"])
@@ -33,7 +33,7 @@ class JamaicansController < ApplicationController
   end
 
   def update
-    @jamaican = Unirest.patch("#{ENV['API_URL']}/jamaicans/#{params[:id]}", parameters: {first_name: params[:first_name], last_name: params[:last_name], position: params[:position]}, headers:{"Accept" => "application/json"}).body
+    @jamaican = Unirest.patch("#{ENV['API_URL']}/jamaicans/#{params[:id]}", parameters: {first_name: params[:first_name], last_name: params[:last_name], position: params[:position]}, headers:{"Accept" => "application/json", "Authorization" => "Token test", "User-Email" => "test"}).body
 
     redirect_to "/jamaicans/#{@jamaican['id']}"
   end

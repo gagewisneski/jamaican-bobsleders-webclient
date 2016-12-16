@@ -10,13 +10,13 @@ class Jamaican
   end
 
   def self.find(id)
-    unirest_jamaican = Unirest.get("#{ENV['API_URL']}/jamaicans/#{id}.json").body
+    unirest_jamaican = Unirest.get("#{ENV['API_URL']}/jamaicans/#{id}.json", headers:{"Accept" => "application/json", "Authorization" => "Token test", "User-Email" => "test"}).body
     jamaican = Jamaican.new(unirest_jamaican)
     return jamaican
   end
 
   def self.all
-    unirest_jamaicans = Unirest.get("#{ENV['API_URL']}/jamaicans").body
+    unirest_jamaicans = Unirest.get("#{ENV['API_URL']}/jamaicans", headers:{"Accept" => "application/json", "Authorization" => "Token test", "User-Email" => "test"}).body
     jamaicans = []
     unirest_jamaicans.each do |unirest_jamaican|
       jamaican = Jamaican.new(unirest_jamaican)
@@ -26,7 +26,7 @@ class Jamaican
   end
 
   def destroy
-    jamaican = Unirest.delete("#{ENV['API_URL']}/jamaicans/#{id}")
+    jamaican = Unirest.delete("#{ENV['API_URL']}/jamaicans/#{id}", headers:{"Accept" => "application/json", "Authorization" => "Token test", "User-Email" => "test"})
   end
 
 end
